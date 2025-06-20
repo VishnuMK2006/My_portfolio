@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0A0A0A;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Custom Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px #00FF41; }
+  50% { box-shadow: 0 0 40px #00FF41, 0 0 60px #00FF41; }
+}
+
+@keyframes loading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Floating emoji animations */
+@keyframes float-0 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-30px) rotate(180deg); } }
+@keyframes float-1 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-25px) rotate(-180deg); } }
+@keyframes float-2 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-35px) rotate(360deg); } }
+@keyframes float-3 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(-360deg); } }
+@keyframes float-4 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-40px) rotate(180deg); } }
+@keyframes float-5 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-28px) rotate(-180deg); } }
+@keyframes float-6 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-32px) rotate(360deg); } }
+@keyframes float-7 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-22px) rotate(-360deg); } }
+@keyframes float-8 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-38px) rotate(180deg); } }
+@keyframes float-9 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-26px) rotate(-180deg); } }
+@keyframes float-10 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-34px) rotate(360deg); } }
+@keyframes float-11 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-24px) rotate(-360deg); } }
+
+/* Custom button styles */
+.ben10-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ben10-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.ben10-button:hover::before {
+  left: 100%;
+}
+
+.ben10-button-outline {
+  position: relative;
+  overflow: hidden;
+}
+
+.ben10-button-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.ben10-button-outline:hover::before {
+  left: 100%;
+}
+
+/* Navigation link styles */
+.nav-link {
+  position: relative;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00FF41, #00CC33);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Social link hover effects */
+.social-link {
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 65, 0.5);
+}
+
+/* Skill bar animations */
+.skill-bar-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Card hover effects */
+.skill-card:hover,
+.project-card:hover,
+.cert-card:hover,
+.blog-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 255, 65, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Perspective for 3D effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-y-12:hover {
+  transform: rotateY(12deg);
+}
+
+/* Text line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Dark mode styles */
+.app.dark {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #1A1A2E;
+  --text-primary: #FFFFFF;
+  --text-secondary: #CCCCCC;
+  --accent: #00FF41;
+}
+
+.app.light {
+  --bg-primary: #F0F0F0;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #666666;
+  --accent: #00CC33;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A2E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00FF41, #00CC33);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00CC33, #00FF41);
+}
+
+/* Responsive typography and layout fixes */
+@media (max-width: 1024px) {
+  /* Medium screens - fix header overlap */
+  #hero {
+    padding-top: 5rem !important;
+    z-index: 10 !important;
+  }
+  
+  /* Ensure header stays on top */
+  header {
+    z-index: 50 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ensure hero content doesn't overlap with fixed header */
+  #hero {
+    padding-top: 6rem !important;
+    z-index: 10 !important;
+  }
+  
+  /* Fix education section spacing */
+  #education {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  /* Responsive text sizes */
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .hero-text {
+    text-align: center;
+  }
+  
+  /* Mobile button adjustments */
+  .ben10-button,
+  .ben10-button-outline {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  /* Mobile social links */
+  .social-link {
+    padding: 0.75rem;
+  }
+  
+  /* Mobile omnitrix size */
+  .omnitrix-hero {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  
+  .omnitrix-hero > div {
+    width: 120px !important;
+    height: 120px !important;
+    font-size: 50px !important;
+  }
+  
+  /* Mobile menu improvements */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 40;
+  }
+  
+  /* Education section mobile fixes */
+  .education-item {
+    margin-bottom: 2rem;
+  }
+  
+  .education-timeline {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #hero {
+    padding-top: 7rem !important;
+  }
+  
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  .omnitrix-hero {
+    width: 160px !important;
+    height: 160px !important;
+  }
+  
+  .omnitrix-hero > div {
+    width: 100px !important;
+    height: 100px !important;
+    font-size: 40px !important;
+  }
+  
+  /* Smaller spacing for very small screens */
+  #education {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .education-item {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid #00FF41;
+  outline-offset: 2px;
+}
+
+/* Loading screen specific styles */
+.omnitrix-loader {
+  border: 4px solid #00FF41;
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite, glow 2s ease-in-out infinite alternate;
+}
+
+.loading-progress {
+  animation: loading 2s ease-in-out infinite;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}
