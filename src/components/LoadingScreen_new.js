@@ -112,12 +112,11 @@ const LoadingScreen = () => {
           {
             className: 'loading-progress',
             style: {
-              width: '50%',
+              width: '100%',
               height: '100%',
-              background: 'linear-gradient(90deg, transparent, #00FF41, #00CC33, transparent)',
-              animation: 'continuous-roll 2s linear infinite',
-              borderRadius: '1px',
-              position: 'absolute'
+              background: 'linear-gradient(90deg, #00FF41, #00CC33)',
+              animation: 'loading-slide 2s ease-in-out infinite',
+              borderRadius: '1px'
             }
           }
         )
@@ -152,11 +151,6 @@ const LoadingScreen = () => {
         0% { transform: translateX(-100%); }
         50% { transform: translateX(0%); }
         100% { transform: translateX(100%); }
-      }
-      
-      @keyframes continuous-roll {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(300%); }
       }
       
       .professional-loader {

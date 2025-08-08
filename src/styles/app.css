@@ -3,6 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom utility classes */
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,12 +25,106 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
   background: #0A0A0A;
   color: white;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbars on all scrollable elements */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox on all elements */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Remove extra scrollbars and improve performance */
+* {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Main app container */
+.app {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Ensure no horizontal scrollbars */
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Prevent any element from causing horizontal scroll */
+* {
+  max-width: 100%;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Section containers */
+section {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Grid and flex containers */
+.grid, .flex {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Hardware acceleration for smooth animations */
+.professional-loader,
+.professional-button,
+.professional-button-outline {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Smooth transitions */
+.professional-button,
+.professional-button-outline {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.professional-button:hover,
+.professional-button-outline:hover {
+  transform: translateZ(0) scale(1.05);
+  -webkit-transform: translateZ(0) scale(1.05);
 }
 
 /* Custom Animations */
@@ -64,13 +172,13 @@ body {
 @keyframes float-10 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-34px) rotate(360deg); } }
 @keyframes float-11 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-24px) rotate(-360deg); } }
 
-/* Custom button styles */
-.ben10-button {
+/* Professional button styles */
+.professional-button {
   position: relative;
   overflow: hidden;
 }
 
-.ben10-button::before {
+.professional-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -78,19 +186,19 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
+  transition: left 0.5s ease;
 }
 
-.ben10-button:hover::before {
+.professional-button:hover::before {
   left: 100%;
 }
 
-.ben10-button-outline {
+.professional-button-outline {
   position: relative;
   overflow: hidden;
 }
 
-.ben10-button-outline::before {
+.professional-button-outline::before {
   content: '';
   position: absolute;
   top: 0;
@@ -98,10 +206,10 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
-  transition: left 0.5s;
+  transition: left 0.5s ease;
 }
 
-.ben10-button-outline:hover::before {
+.professional-button-outline:hover::before {
   left: 100%;
 }
 
@@ -211,24 +319,6 @@ body {
   --text-primary: #1A1A1A;
   --text-secondary: #666666;
   --accent: #00CC33;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1A1A2E;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00FF41, #00CC33);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #00CC33, #00FF41);
 }
 
 /* Responsive typography and layout fixes */
@@ -385,4 +475,310 @@ a:focus-visible {
     background: white;
     color: black;
   }
+}
+
+/* 3D Tilt Animation Styles for Projects */
+.project-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0); /* Force hardware acceleration */
+  -webkit-transform: translateZ(0);
+}
+
+/* Enhanced 3D effect on hover */
+.project-card:hover {
+  transform-style: preserve-3d;
+}
+
+/* Smooth hardware acceleration for all child elements */
+.project-card,
+.project-card * {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  /* Optimize for animations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions for nested elements */
+.project-card > div {
+  transition: transform 0.05s ease-out; /* Reduced from 0.1s */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Additional glow effect for 3D cards */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(0, 255, 65, 0.1), 
+    rgba(0, 204, 51, 0.05), 
+    rgba(0, 255, 65, 0.1)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(-1px);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Optimize animation performance */
+@media (prefers-reduced-motion: no-preference) {
+  .project-card {
+    transform-origin: center center;
+  }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    transform: none !important;
+  }
+  
+  .project-card:hover {
+    transform: scale(1.02) !important;
+    transition: transform 0.2s ease;
+  }
+}
+
+/* Skills Card Flip Animation Styles */
+.skill-card-container {
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+.skill-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.skill-card-container:hover .skill-card-inner {
+  transform: rotateY(180deg);
+}
+
+.skill-card-front,
+.skill-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.skill-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Enhanced hover effects */
+.skill-card-container:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+/* Enhanced glow effect for skill cards */
+.skill-card-front::before,
+.skill-card-back::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, 
+    rgba(0, 255, 65, 0.3), 
+    rgba(0, 204, 51, 0.1), 
+    rgba(0, 255, 65, 0.3)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.4s ease;
+}
+
+.skill-card-container:hover .skill-card-back::before {
+  opacity: 1;
+}
+
+/* Skill bar animation on flip */
+.skill-card-container:hover .skill-bar-fill {
+  animation: skillBarGrow 1.5s ease-out 0.4s both;
+  transform-origin: left center;
+}
+
+@keyframes skillBarGrow {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Pulsing effect for front card indicator */
+.skill-card-front .animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Smooth scroll for skills content */
+.skill-card-back .overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 65, 0.3) transparent;
+}
+
+.skill-card-back .overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+
+.skill-card-back .overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.skill-card-back .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 65, 0.3);
+  border-radius: 2px;
+}
+
+.skill-card-back .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 65, 0.5);
+}
+
+/* Rolling Skills Cards Animation */
+.rolling-cards-container {
+  overflow: hidden;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.rolling-cards-track {
+  display: flex;
+  animation: rollCards 30s linear infinite;
+  gap: 0;
+}
+
+.rolling-cards-set {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.skill-card-container {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.skill-card-container:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* Pause animation on hover */
+.rolling-cards-container:hover .rolling-cards-track {
+  animation-play-state: paused;
+}
+
+/* Flip animation on individual card hover */
+.skill-card-container:hover .skill-card-inner {
+  transform: rotateY(180deg);
+}
+
+.skill-card-inner {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease-in-out;
+}
+
+.skill-card-front,
+.skill-card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+.skill-card-front {
+  transform: rotateY(0deg);
+}
+
+.skill-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Transform style preserve 3D */
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+@keyframes rollCards {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Smooth fade for card edges */
+.rolling-cards-container::before,
+.rolling-cards-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.rolling-cards-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(26, 26, 46, 1), transparent);
+}
+
+.rolling-cards-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(26, 26, 46, 1), transparent);
 }

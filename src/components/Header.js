@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import ben10Logo from './logo/ben10.svg';
+import { Moon, Sun, Menu, X, User } from 'lucide-react';
 const Header = ({ darkMode, toggleDarkMode }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -71,43 +70,6 @@ const Header = ({ darkMode, toggleDarkMode }) => {
             className: 'flex items-center space-x-2 cursor-pointer z-50',
             onClick: () => scrollToSection('hero')
           },
-          React.createElement(
-            'div',
-            {
-              className: 'omnitrix-logo',
-              style: {
-                width: '40px',
-                height: '40px',
-                background: 'linear-gradient(45deg,rgb(0, 0, 0),rgb(0, 193, 48))',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 0 20px #00FF41',
-                animation: 'pulse 2s infinite'
-              }
-            },
-            React.createElement(
-  'span',
-  {
-    style: {
-      color: 'black',
-      fontSize: '20px',
-      fontWeight: 'bold',
-      fontFamily: 'Orbitron, monospace',
-    }
-  },
-  React.createElement('img', {
-    src: ben10Logo, 
-    alt: 'Clock Icon',
-    style: {
-      width: '50px',
-      height: '50px',
-      verticalAlign: 'middle'
-    }
-  })
-)
-          ),
           React.createElement(
             'span',
             {

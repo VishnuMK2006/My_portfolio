@@ -7,7 +7,7 @@ import resume from './resume/resume.pdf';
 const Hero = () => {
   const heroRef = useRef(null);
   const textRef = useRef(null);
-  const omnitrixRef = useRef(null);
+  const profileRef = useRef(null);
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -61,27 +61,27 @@ const Hero = () => {
   useEffect(() => {
     const hero = heroRef.current;
     const text = textRef.current;
-    const omnitrix = omnitrixRef.current;
+    const profile = profileRef.current;
 
-    // Initial animations
+    // Initial animations with smoother transitions
     gsap.fromTo(text.children, 
       { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out' }
+      { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: 'power2.out' }
     );
 
-    gsap.fromTo(omnitrix,
-      { scale: 0, rotation: 180 },
-      { scale: 1, rotation: 0, duration: 1.5, ease: 'back.out(1.7)' }
+    gsap.fromTo(profile,
+      { scale: 0.8, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.8, ease: 'power2.out' }
     );
 
-    // Parallax effect
+    // Subtle parallax effect for smoother interaction
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
-      const x = (clientX / innerWidth - 0.5) * 20;
-      const y = (clientY / innerHeight - 0.5) * 20;
+      const x = (clientX / innerWidth - 0.5) * 15;
+      const y = (clientY / innerHeight - 0.5) * 15;
 
-      gsap.to(omnitrix, { x, y, duration: 0.5 });
+      gsap.to(profile, { x, y, duration: 0.8, ease: 'power2.out' });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -147,7 +147,7 @@ const Hero = () => {
               className: 'text-xl sm:text-2xl lg:text-3xl text-green-400 mb-6 font-medium',
               style: { fontFamily: 'Rajdhani, sans-serif' }
             },
-            '@Vishnu_MK2006'
+            'Full Stack Developer'
           ),
           React.createElement(
             'p',
@@ -163,7 +163,7 @@ const Hero = () => {
             React.createElement(
               'button',
               {
-                className: 'ben10-button px-6 sm:px-8 py-3 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105',
+                className: 'professional-button px-6 sm:px-8 py-3 bg-green-500 hover:bg-green-400 text-black font-bold rounded-lg transition-all duration-500 transform hover:scale-105',
                 style: {
                   boxShadow: '0 0 20px #00FF41',
                   fontFamily: 'Orbitron, monospace'
@@ -184,7 +184,7 @@ const Hero = () => {
             React.createElement(
               'button',
               {
-                className: 'ben10-button-outline px-6 sm:px-8 py-3 border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-black font-bold rounded-lg transition-all duration-300',
+                className: 'professional-button-outline px-6 sm:px-8 py-3 border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-black font-bold rounded-lg transition-all duration-500',
                 style: { fontFamily: 'Orbitron, monospace' },
                 onClick: () => {
                   const projectsSection = document.getElementById('projects');
@@ -221,7 +221,7 @@ const Hero = () => {
           React.createElement(
             'div',
             {
-              ref: omnitrixRef,
+              ref: profileRef,
               className: 'relative w-full lg:w-auto',
               style: {
                 animation: 'float 6s ease-in-out infinite'

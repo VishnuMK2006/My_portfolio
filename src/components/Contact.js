@@ -165,7 +165,7 @@ const Contact = () => {
                 className: 'text-gray-300 text-lg leading-relaxed mb-8',
                 style: { fontFamily: 'Rajdhani, sans-serif' }
               },
-              'Whether you need help with alien technology integration, want to discuss a new project, or just want to say hello from your corner of the galaxy, I\'m always excited to connect with fellow beings!'
+              'Just contact with me!'
             )
           ),
           React.createElement(
@@ -220,7 +220,7 @@ const Contact = () => {
                 className: 'text-xl font-bold text-white mb-4',
                 style: { fontFamily: 'Orbitron, monospace' }
               },
-              'Follow My Galactic Journey'
+              'Follow me'
             ),
             React.createElement(
               'div',
@@ -292,7 +292,7 @@ const Contact = () => {
                     fontFamily: 'Rajdhani, sans-serif',
                     boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)'
                   },
-                  placeholder: 'Your galactic name'
+                  placeholder: 'Your name'
                 })
               ),
               React.createElement(
@@ -317,7 +317,7 @@ const Contact = () => {
                     fontFamily: 'Rajdhani, sans-serif',
                     boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)'
                   },
-                  placeholder: 'your.email@galaxy.com'
+                  placeholder: 'abc@gmail.com'
                 })
               )
             ),
@@ -343,7 +343,7 @@ const Contact = () => {
                   fontFamily: 'Rajdhani, sans-serif',
                   boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)'
                 },
-                placeholder: 'Project collaboration opportunity'
+                placeholder: 'Subject'
               })
             ),
             React.createElement(
@@ -368,7 +368,7 @@ const Contact = () => {
                   fontFamily: 'Rajdhani, sans-serif',
                   boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)'
                 },
-                placeholder: 'Tell me about your intergalactic project ideas...'
+                placeholder: 'Content'
               })
             ),
             React.createElement(
