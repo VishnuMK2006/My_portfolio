@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import mypic from './logo/my_pic.png';
-import resume from './resume/resume.pdf';
+import resume from './resume.pdf';
 
 const Hero = () => {
   const heroRef = useRef(null);
